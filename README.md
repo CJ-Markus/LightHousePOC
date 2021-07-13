@@ -1,5 +1,5 @@
 # LightHouse POC
-This repo is to keep LH initiative alive. Since all our customers likes to measure, gather and compare performance numbers and different UI metrics, using LH tool, I decided it will be useful to have some kind of POC. There are no any packages in this PR or fancy code. One thing that changes is python script, where you can:
+This repo is to keep LH initiative alive. Since all our customers like to measure, gather and compare performance numbers and different UI metrics, using LH tool, I decided it will be useful to have some kind of POC. There are no any packages in this PR or fancy code. One thing that changes is python script, where you can:
 * add/remove sites you want to test. Change following section in script
 ``` 
 if __name__ == "__main__":
@@ -195,7 +195,7 @@ order by site
 SELECT
   time AS "time",
   site AS metric,
-  metric_value/1000
+  metric_value/1000  // almost all results are in mseconds. To display seconds we have to divide by 1000
 FROM mysql.lh_reports_1
 where metric_name="speedIndex"
 ORDER BY time
@@ -203,3 +203,13 @@ ORDER BY time
 ![image](https://user-images.githubusercontent.com/54897268/125469684-e3179bc0-949f-4850-8498-e7cb44028cbb.png)
 
 ![image](https://user-images.githubusercontent.com/54897268/125470898-3c7312e1-b404-4305-b227-441988189f8c.png)
+
+# Another way to display all these graphs in Graphana is to import configuration json file
+Open settings in the Graphana Dashboard
+![image](https://user-images.githubusercontent.com/54897268/125501170-9849b176-aa12-4494-97bb-c0e9719efbad.png)
+
+
+Open JSON model window
+![image](https://user-images.githubusercontent.com/54897268/125501311-d5ab302b-893b-4630-b627-f1804e226742.png)
+
+Copypaste data from GraphanaJSONmodel
