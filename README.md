@@ -203,3 +203,13 @@ ORDER BY time
 ![image](https://user-images.githubusercontent.com/54897268/125469684-e3179bc0-949f-4850-8498-e7cb44028cbb.png)
 
 ![image](https://user-images.githubusercontent.com/54897268/125470898-3c7312e1-b404-4305-b227-441988189f8c.png)
+
+# Another way to display all these graphs in Graphana is to import configuration json file
+Open settings in the Graphana Dashboard
+![image](https://user-images.githubusercontent.com/54897268/125501170-9849b176-aa12-4494-97bb-c0e9719efbad.png)
+
+
+Open JSON model window
+![image](https://user-images.githubusercontent.com/54897268/125501311-d5ab302b-893b-4630-b627-f1804e226742.png)
+
+Copypaste data from GraphanaJSONmodel
