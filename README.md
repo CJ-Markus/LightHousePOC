@@ -50,24 +50,25 @@ Then in Graphana you can create dashboard with reports and have historical data
 ![image](https://user-images.githubusercontent.com/54897268/125450027-a4571ca1-b6c0-441c-bc11-7850cbe75052.png)
 
 # Examples for graphana SQL:
+1) To get table view for BE metrics per site, last not null:
 SELECT
   distinct site as s,
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
-  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='totalBlockingTime' order by time desc limit 1) as "totalBlockingTime",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='estimatedInputLatency' order by time desc limit 1) as "estimatedInputLatency",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='serverResponseTime' order by time desc limit 1) as "serverResponseTime",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numRequests' order by time desc limit 1) as "numRequests",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numScripts' order by time desc limit 1) as "numScripts",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numTasksOver10ms' order by time desc limit 1) as "numTasksOver10ms",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numTasksOver25ms' order by time desc limit 1) as "numTasksOver25ms",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numTasksOver50ms' order by time desc limit 1) as "numTasksOver50ms",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numTasksOver100ms' order by time desc limit 1) as "numTasksOver100ms",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='numTasksOver500ms' order by time desc limit 1) as "numTasksOver500ms",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxServerLatency' order by time desc limit 1) as "maxServerLatency"
 FROM mysql.lh_reports_1
 order by site
 
-
+2) To display historical data per metric:
 SELECT
   time AS "time",
   site AS metric,
