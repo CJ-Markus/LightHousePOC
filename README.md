@@ -12,23 +12,32 @@ Easy to run on MAC, may take some time to fix issues on Windows. Just be careful
 
 
 1) Using Docker, create LightHouse network. It will include local DB, local Graphana.
+
 docker network create lh-network
 
 2) Create data base. Specify user, password and port. In our case that is: root, password, 3306
+
 docker run --network lh-network --name lh-mysql -v /Users/innale/Workspaces/lighthouse/mysql_store:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -d -p 3306:3306 mysql:latest
 
 3) Run DB.
+
 docker run -it --network lh-network --rm mysql mysql -hlh-mysql -uroot -ppassword
 
 4) Create table to store results 
+
 create table mysql.lh_reports_1 (time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, site VARCHAR(255) NOT NULL, metric_name VARCHAR(255) NOT NULL, metric_value FLOAT NOT NULL);
 
 5) Just try to insert smth to newly created table
+
+
 insert into mysql.lh_reports (site, metric_name, metric_value) VALUES ('google.com', performance, 0.12); //just a test for a DB
 
 6) Run graphana
+
 docker run --network lh-network --name grafana -d -p 3000:3000 grafana/grafana
 To open graphana locally: http://localhost:3000/d/yfcBDAinz/site-reports?orgId=1 
+
+
 
 7) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
 In this script I gathered different FE and BE metrics. Not all of them, but if needed, we can always add more 
