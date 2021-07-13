@@ -59,6 +59,9 @@ Then in Graphana you can create dashboard with reports and have historical data
 
 # Examples for graphana SQL:
 1) To get table view for BE metrics per site, last not null:
+
+
+```
 SELECT
   distinct site as s,
   (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='totalBlockingTime' order by time desc limit 1) as "totalBlockingTime",
@@ -75,11 +78,13 @@ SELECT
   (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxServerLatency' order by time desc limit 1) as "maxServerLatency"
 FROM mysql.lh_reports_1
 order by site
+```
 
 ![image](https://user-images.githubusercontent.com/54897268/125470674-c49751f8-68ef-4817-9986-ac1ea93eda4e.png)
 
 
 2) To display historical data per metric:
+```
 SELECT
   time AS "time",
   site AS metric,
@@ -87,6 +92,7 @@ SELECT
 FROM mysql.lh_reports_1
 where metric_name="speedIndex"
 ORDER BY time
-
+```
 ![image](https://user-images.githubusercontent.com/54897268/125469684-e3179bc0-949f-4850-8498-e7cb44028cbb.png)
 
+![image](https://user-images.githubusercontent.com/54897268/125470898-3c7312e1-b404-4305-b227-441988189f8c.png)
