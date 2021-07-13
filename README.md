@@ -21,7 +21,7 @@ if __name__ == "__main__":
         )
 ```
  
- //here I am defining metrics that we collects, based on generated json files.
+ //Here we define metrics that we collect, based on generated json files.
 
 ```
         stdout, stderr = p.communicate()
@@ -42,7 +42,7 @@ if __name__ == "__main__":
                site = url.split("://")[-1]
 ```
 
-//Here we printt out to console for visibility
+//Here we print out to console for visibility
 
 ```
         print(f"Site: {site}")
@@ -73,7 +73,7 @@ if __name__ == "__main__":
  ```
         
        
-  //Inserting values to data base       
+  //Inserting values into Data Base       
  ```
        for name, value in metrics.items():
             cursor.execute(
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
 To make it complex and fancy, build it into continues integration. Just read instructions here: https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/getting-started.md
 
-I decided to keep it simple for a POC and created instructions on how to run it locally. Same steps may be done on remote server with shared environment
+I decided to keep it simple for a POC and created instructions on how to run it locally. Same steps may be done on a remote server with shared environment
 
 
 # Prerequesits
