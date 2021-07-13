@@ -74,6 +74,9 @@ SELECT
 FROM mysql.lh_reports_1
 order by site
 
+![image](https://user-images.githubusercontent.com/54897268/125469616-0424b348-bccf-40f9-a41c-c46b7abc4d16.png)
+
+
 2) To display historical data per metric:
 SELECT
   time AS "time",
@@ -83,4 +86,5 @@ FROM mysql.lh_reports_1
 where metric_name="speedIndex"
 ORDER BY time
 
+![image](https://user-images.githubusercontent.com/54897268/125469684-e3179bc0-949f-4850-8498-e7cb44028cbb.png)
 
