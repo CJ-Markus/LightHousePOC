@@ -40,10 +40,13 @@ def main(urls):
         largestContentfulPaint = audits["largest-contentful-paint"]["numericValue"]
         speedIndex = audits["speed-index"]["numericValue"]
         estimatedInputLatency = audits["estimated-input-latency"]["numericValue"]
+        firstInputDelay = audits["max-potential-fid"]["numericValue"]
         totalBlockingTime = audits["total-blocking-time"]["numericValue"]
         errorsInConsole = audits["errors-in-console"]["score"]
         serverResponseTime = audits["server-response-time"]["numericValue"]
         interactive = audits["interactive"]["numericValue"]
+        cumulativeLayoutShift = audits["cumulative-layout-shift"]["numericValue"]
+        
 
         metrics = report["audits"]["metrics"]["details"]["items"][0]
         observedFirstVisualChange = metrics["observedFirstVisualChange"]
@@ -83,6 +86,8 @@ def main(urls):
         print(f"observedLastVisualChange: {observedLastVisualChange}")
         print(f"numRequests: {numRequests}")
         print(f"numScripts: {numScripts}")
+        print(f"cumulativeLayoutShift: {cumulativeLayoutShift}")
+        print(f"firstInputDelay: {firstInputDelay}")
         print(f"numTasksOver10ms: {numTasksOver10ms}")
         print(f"numTasksOver25ms: {numTasksOver25ms}")
         print(f"numTasksOver50ms: {numTasksOver50ms}")
@@ -102,6 +107,7 @@ def main(urls):
             "seo":seo,
             "pwa":pwa,
             "firstContentfulPaint":firstContentfulPaint,
+            "firstInputDelay":firstInputDelay,
             "largestContentfulPaint":largestContentfulPaint,
             "speedIndex":speedIndex,
             "estimatedInputLatency":estimatedInputLatency,
@@ -111,6 +117,7 @@ def main(urls):
             "interactive":interactive,
             "observedFirstVisualChange":observedFirstVisualChange,
             "observedLastVisualChange":observedLastVisualChange,
+            "cumulativeLayoutShift":cumulativeLayoutShift,
             "numRequests":numRequests,
             "numScripts":numScripts,
             "numTasksOver10ms":numTasksOver10ms,
