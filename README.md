@@ -1,5 +1,93 @@
 # LightHouse POC
-This repo is to keep LH initiative alive. Since all our customers likes to measure and compare performance numbers and different UI metrics, using LH tool, I decided it will be useful to have some kind of POC.
+This repo is to keep LH initiative alive. Since all our customers likes to measure, gather and compare performance numbers and different UI metrics, using LH tool, I decided it will be useful to have some kind of POC. There are no any packages in this PR or fancy code. One thing that changes is python script, where you can:
+* add/remove sites you want to test. Change following section in script
+``` 
+if __name__ == "__main__":
+    main(["https://cowab.se", "https://cowab.no"])  //here you can add or remove test sites
+    
+```  
+    
+* run with or without headless mode
+* use different options to start test with throatling, or emulate mobile device
+```
+  for url in urls:
+        print(f"__________________________")
+        print(f"Collecting stats for {url}")
+        p = Popen(
+            f"lighthouse {url} --output json --chrome-flags=--headless",  //that is how you start light house. More options are available, just google
+            shell=True,
+            stdout=PIPE,
+            stderr=PIPE
+        )
+```
+
+
+```
+        //here I am defining metrics that we collects, based on generated json files.
+        stdout, stderr = p.communicate()
+        report = json.loads(stdout.decode("UTF-8"))
+
+        categories = report["categories"]
+        performance = categories["performance"]["score"]
+        accessibility = categories["accessibility"]["score"]
+        bestPractices=categories["best-practices"]["score"]
+        seo = categories["seo"]["score"]
+        pwa = categories["pwa"]["score"]
+        .....
+```
+       
+```
+        //We split URL into 2 parts and throw away everything with "htttps://" just to display url in a more readable way: cowab.se, instead of https://cowab.se
+        site = url.split("://")[-1]
+```
+
+```
+        //Printing out to console for visibility
+        print(f"Site: {site}")
+        print(f"performance: {performance}")
+        print(f"accessibility: {accessibility}")
+        print(f"bestPractices: {bestPractices}")
+        print(f"seo: {seo}")
+        print(f"pwa: {pwa}")
+        .....
+ ```       
+        
+```
+        //Linking metric names and metric values together
+        metrics={
+            "performance": performance,
+            "accessibility": accessibility,
+            "bestPractices": bestPractices,
+            "seo":seo,
+            "pwa":pwa,
+            "firstContentfulPaint":firstContentfulPaint,
+            "largestContentfulPaint":largestContentfulPaint,
+            "speedIndex":speedIndex,
+            "estimatedInputLatency":estimatedInputLatency,
+            ......
+            "totalByteWeight":totalByteWeight,
+            "totalTaskTime":totalTaskTime
+        }
+ ```
+        
+       
+       
+ ```
+        //Inserting values to data base 
+        for name, value in metrics.items():
+            cursor.execute(
+                f"INSERT INTO mysql.lh_reports_1 (site, metric_name, metric_value)"
+                f"VALUES ('{site}', '{name}', {value})"
+            )
+        cursor.execute("COMMIT")
+
+```  
+    
+
+To make it complex and fancy, build it into continues integration. Just read instructions here: https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/getting-started.md
+
+I decided to keep it simple for a POC and created instructions on how to run it locally. Same steps may be done on remote server with shared environment
+
 
 # Prerequesits
 1. Docker
