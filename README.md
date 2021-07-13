@@ -49,5 +49,31 @@ Script will print out all gathered metrics
 Then in Graphana you can create dashboard with reports and have historical data
 ![image](https://user-images.githubusercontent.com/54897268/125450027-a4571ca1-b6c0-441c-bc11-7850cbe75052.png)
 
+# Examples for graphana SQL:
+SELECT
+  distinct site as s,
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='performance' order by time desc limit 1) as "Performance",
+  (select metric_value from mysql.lh_reports_1 m where m.site=s and metric_name='maxRtt' order by time desc limit 1) as "Max RTT"
+FROM mysql.lh_reports_1
+order by site
+
+
+SELECT
+  time AS "time",
+  site AS metric,
+  metric_value/1000
+FROM mysql.lh_reports_1
+where metric_name="speedIndex"
+ORDER BY time
 
 
