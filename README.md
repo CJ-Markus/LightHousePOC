@@ -212,4 +212,4 @@ Open settings in the Graphana Dashboard
 Open JSON model window
 ![image](https://user-images.githubusercontent.com/54897268/125501311-d5ab302b-893b-4630-b627-f1804e226742.png)
 
-Copypaste data from GraphanaJSONmodel
+Copypaste data from GraphanaJSONmodel.txt file
