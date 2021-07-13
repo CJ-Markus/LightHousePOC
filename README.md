@@ -48,7 +48,10 @@ To open graphana locally: http://localhost:3000/d/yfcBDAinz/site-reports?orgId=1
 7) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
 In this script I gathered different FE and BE metrics. Not all of them, but if needed, we can always add more 
 
-8) To run this script you need to install python. Then just type in a CLI: python report.py
+8) To run this script you need to install python. Then just type in a CLI: 
+
+python report.py
+
 Script will print out all gathered metrics
 ![image](https://user-images.githubusercontent.com/54897268/125449877-28f545b8-70b2-44cc-9a5b-06ba5a39e7a0.png)
 
