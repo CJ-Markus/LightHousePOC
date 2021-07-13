@@ -36,14 +36,15 @@ if __name__ == "__main__":
         .....
 ```
 
- //We split URL into 2 parts and throw away everything with "htttps://" just to display url in a more readable way: cowab.se, instead of https://cowab.se
+ //Here we split URL into 2 parts and throw away everything with "htttps://" just to display url in a more readable way: cowab.se, instead of https://cowab.se
        
 ```
                site = url.split("://")[-1]
 ```
 
+//Here we printt out to console for visibility
+
 ```
-        //Printing out to console for visibility
         print(f"Site: {site}")
         print(f"performance: {performance}")
         print(f"accessibility: {accessibility}")
