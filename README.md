@@ -20,10 +20,10 @@ if __name__ == "__main__":
             stderr=PIPE
         )
 ```
-
+ 
+ //here I am defining metrics that we collects, based on generated json files.
 
 ```
-        //here I am defining metrics that we collects, based on generated json files.
         stdout, stderr = p.communicate()
         report = json.loads(stdout.decode("UTF-8"))
 
@@ -35,10 +35,11 @@ if __name__ == "__main__":
         pwa = categories["pwa"]["score"]
         .....
 ```
+
+ //We split URL into 2 parts and throw away everything with "htttps://" just to display url in a more readable way: cowab.se, instead of https://cowab.se
        
 ```
-        //We split URL into 2 parts and throw away everything with "htttps://" just to display url in a more readable way: cowab.se, instead of https://cowab.se
-        site = url.split("://")[-1]
+               site = url.split("://")[-1]
 ```
 
 ```
@@ -52,9 +53,9 @@ if __name__ == "__main__":
         .....
  ```       
         
+//Linking metric names and metric values together
 ```
-        //Linking metric names and metric values together
-        metrics={
+      metrics={
             "performance": performance,
             "accessibility": accessibility,
             "bestPractices": bestPractices,
@@ -71,10 +72,9 @@ if __name__ == "__main__":
  ```
         
        
-       
+  //Inserting values to data base       
  ```
-        //Inserting values to data base 
-        for name, value in metrics.items():
+       for name, value in metrics.items():
             cursor.execute(
                 f"INSERT INTO mysql.lh_reports_1 (site, metric_name, metric_value)"
                 f"VALUES ('{site}', '{name}', {value})"
