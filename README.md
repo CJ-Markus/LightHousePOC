@@ -1,4 +1,4 @@
-# LightHousePOC
+# LightHouse POC
 This repo is to keep LH initiative alive. Since all our customers likes to measure and compare performance numbers and different UI metrics, using LH tool, I decided it will be useful to have some kind of POC.
 
 # Prerequesits
