@@ -12,6 +12,11 @@ This repo is to keep LH initiative alive. Since all our customers likes to measu
 Easy to run on MAC, may take some time to fix issues on Windows. Just be carefull if you are using UNIX clients on Windows. Better to use CMD command line
 
 
+0) Install Lighthouse:
+
+npm i -g lighthouse
+
+
 1) Using Docker, create LightHouse network. It will include local DB, local Graphana.
 
 docker network create lh-network
