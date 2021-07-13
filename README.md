@@ -76,7 +76,7 @@ SELECT
 FROM mysql.lh_reports_1
 order by site
 
-![image](https://user-images.githubusercontent.com/54897268/125469616-0424b348-bccf-40f9-a41c-c46b7abc4d16.png)
+![image](https://user-images.githubusercontent.com/54897268/125470674-c49751f8-68ef-4817-9986-ac1ea93eda4e.png)
 
 
 2) To display historical data per metric:
