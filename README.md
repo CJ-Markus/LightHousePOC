@@ -45,7 +45,10 @@ create table mysql.lh_reports_1 (time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, site 
 5) Just try to insert smth to newly created table
 
 
-insert into mysql.lh_reports (site, metric_name, metric_value) VALUES ('google.com', performance, 0.12); //just a test for a DB
+```
+insert into mysql.lh_reports (site, metric_name, metric_value) VALUES ('google.com', performance, 0.12); 
+```
+
 
 6) Run graphana
 
