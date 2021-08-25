@@ -148,6 +148,10 @@ docker run --network lh-network --name grafana -d -p 3000:3000 grafana/grafana
 To open graphana locally: http://localhost:3000/d/yfcBDAinz/site-reports?orgId=1 
 Use admin/admin as a login and password
 
+Connect it to MySQL data source:
+
+![image](https://user-images.githubusercontent.com/54897268/130839796-b9f30c6d-c457-4fa1-a114-eb15af3b0286.png)
+
 
 7) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
 In this script I gathered different FE and BE metrics. Not all of them, but if needed, we can always add more 
