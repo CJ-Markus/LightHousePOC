@@ -146,7 +146,7 @@ docker run --network lh-network --name grafana -d -p 3000:3000 grafana/grafana
 ```
 
 To open graphana locally: http://localhost:3000/d/yfcBDAinz/site-reports?orgId=1 
-
+Use admin/admin as a login and password
 
 
 7) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
