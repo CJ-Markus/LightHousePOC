@@ -131,15 +131,7 @@ docker run -it --network lh-network --rm mysql mysql -hlh-mysql -uroot -ppasswor
 create table mysql.lh_reports_1 (time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, site VARCHAR(255) NOT NULL, metric_name VARCHAR(255) NOT NULL, metric_value FLOAT NOT NULL);
 ```
 
-5) Just try to insert smth to newly created table
-
-
-```
-insert into mysql.lh_reports (site, metric_name, metric_value) VALUES ('google.com', performance, 0.12); 
-```
-
-
-6) Run graphana
+5) Run graphana
 
 ```
 docker run --network lh-network --name grafana -d -p 3000:3000 grafana/grafana
@@ -153,10 +145,10 @@ Connect it to MySQL data source:
 ![image](https://user-images.githubusercontent.com/54897268/130839796-b9f30c6d-c457-4fa1-a114-eb15af3b0286.png)
 
 
-7) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
+6) Now true fun begins. LH can generate HTML or/and json file with the results. I have created python script to get results from json file.
 In this script I gathered different FE and BE metrics. Not all of them, but if needed, we can always add more 
 
-8) To run this script you need to install python. Then just type in a CLI: 
+7) To run this script you need to install python. Then just type in a CLI: 
 ```
 python report.py
 ```
